@@ -70,7 +70,17 @@ public class Main {
      * @param mid the boundary point of the two ranges. arrayList[mid] is in the second range.
      * @param hi the index of the last element in the second range + 1.
      */
+    //1. Create a temporary array. We will put elements from the two ranges into the temp array in sorted order.
+    // 2. Start at the first element of each range. For each range, the element that you are at is the "current element".
+    // 3. If either range has no more elements, take the current element from the other range and add it to the temp array. If both ranges have elements left, check which current element is smaller and add that element to your temporary array (if they are the same, you can pick either although the element in the left array is preferred).
+    // 4. Only for the range that had the number you added, move to the next element.
+    // 5. If there are more elements that need to be added, go back to step 3. Otherwise, move on to step 6.
+    // 6. Copy the temp array back into the location of the ranges we just merged.
     public static void merge(ArrayList<Integer> arrayList, int lo, int mid, int hi) {
-        throw new UnsupportedOperationException("merge() has not been implemented yet");
+        ArrayList<Integer> tempArray = new ArrayList<Integer>();
+        for(int i = 0; i < arrayList.size(); i++)
+        {
+            if
+        }
     }
 }
