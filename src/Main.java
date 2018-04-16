@@ -55,9 +55,16 @@ public class Main {
      * @param arrayList the ArrayList to be sorted.
      * @param lo the index of the first element in the range
      * @param hi the index of the last element in the range + 1.
+     *           **Sort** is defined recursively:
+    1. Start with the entire ArrayList as your “range”.
+    2. If the size of the range is 1 or 0, it is already sorted. You are done sorting the range.
+    3. Otherwise, divide your range in half, into two smaller ranges. **Sort** each individual range, and then **merge** the ranges together.
      */
     public static void sort(ArrayList<Integer> arrayList, int lo, int hi) {
-        throw new UnsupportedOperationException("sort() has not been implemented yet");
+        if(arrayList.size() != 0 || arrayList.size() != 1)
+        {
+           
+        }
     }
 
     /**
@@ -70,17 +77,45 @@ public class Main {
      * @param mid the boundary point of the two ranges. arrayList[mid] is in the second range.
      * @param hi the index of the last element in the second range + 1.
      */
-    //1. Create a temporary array. We will put elements from the two ranges into the temp array in sorted order.
-    // 2. Start at the first element of each range. For each range, the element that you are at is the "current element".
-    // 3. If either range has no more elements, take the current element from the other range and add it to the temp array. If both ranges have elements left, check which current element is smaller and add that element to your temporary array (if they are the same, you can pick either although the element in the left array is preferred).
-    // 4. Only for the range that had the number you added, move to the next element.
-    // 5. If there are more elements that need to be added, go back to step 3. Otherwise, move on to step 6.
-    // 6. Copy the temp array back into the location of the ranges we just merged.
+
     public static void merge(ArrayList<Integer> arrayList, int lo, int mid, int hi) {
         ArrayList<Integer> tempArray = new ArrayList<Integer>();
-        for(int i = 0; i < arrayList.size(); i++)
+        int middle = mid;
+        int low = lo;
+        int count = 0;
+        for(int i = 0; i < hi; i++)
         {
-            if
+            if(lo < middle && mid < hi)
+            {
+                if (arrayList.get(lo) < arrayList.get(mid))
+                {
+                    tempArray.add(arrayList.get(lo));
+                    lo++;
+                }
+                else
+                {
+                    tempArray.add(arrayList.get(mid));
+                    mid++;
+                }
+            }
+            else
+            {
+                if(lo < middle)
+                {
+                    tempArray.add(arrayList.get(lo));
+                    lo++;
+                }
+                if(mid < hi)
+                {
+                    tempArray.add(arrayList.get(mid));
+                    mid++;
+                }
+            }
+        }
+        for(int j = low; j < hi; j++)
+        {
+            arrayList.set(j, tempArray.get(count));
+            count++;
         }
     }
 }
